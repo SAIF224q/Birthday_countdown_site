@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="setup-screen" class="screen active">
+        <div class="card">
+            <h1>Let's Get Started</h1>
+            <p>Who is this surprise for?</p>
+            <input type="text" id="nameInput" placeholder="Name">
+            <input type="date" id="dateInput">
+            <input type="number" id="yearInput" placeholder="Birth Year (e.g. 2003)">
+            <button onclick="startCountdown()">Start Timer</button>
+        </div>
+    </div>
+
+    <div id="countdown-screen" class="screen hidden">
+        <div class="content">
+            <h2 id="greeting">Waiting for the big moment...</h2>
+            <div class="timer-container">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+            <p class="anticipation-text">Something special is loading...</p>
+        </div>
+    </div>
+
+    <div id="surprise-screen" class="screen hidden">
+        <div id="stage-1" class="stage-content active-stage">
+            <h1 class="big-title">HAPPY BIRTHDAY! <br><span id="bday-name-display"></span></h1>
+            <p class="subtitle">The universe is celebrating you today.</p>
+            <button onclick="startStage2()">Make a Wish 🎂</button>
+        </div>
+        <div id="stage-2" class="stage-content hidden-stage">
+            <h2 class="wish-title">Make a Wish</h2>
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="plate"></div>
+                    <div class="layer layer-bottom"></div>
+                    <div class="layer layer-middle"></div>
+                    <div class="layer layer-top"></div>
+                    <div class="icing"></div>
+                    <div class="drip drip1"></div>
+                    <div class="drip drip2"></div>
+                    <div class="drip drip3"></div>
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" style="left: 50px;">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle" style="left: -50px;">
+                        <div class="flame"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="wish-input-container">
+                <input type="text" id="wish-text" placeholder="Type your biggest goal for this year...">
+                <button id="blow-btn" onclick="blowCandles()">Blow Out Candles 💨</button>
+            </div>
+            <button id="next-stage-btn" class="hidden" onclick="startStage3()">Read Your Message &rarr;</button>
+        </div>
+    </div>
+    <div id="stage-3" class="stage-content hidden-stage"></div>
+    <button id="global-reset" onclick="hardReset()">↻ Reset / Test Again</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

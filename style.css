@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-color: #ffffff;
+    --accent-color: #ff9a9e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Glassmorphism Card */
+.card, .content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Inputs & Buttons */
+input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: none;
+    background: var(--accent-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Timer Styling */
+.timer-container {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.time-box span {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.time-box label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Surprise Screen Typography */
+.big-title {
+    font-size: 4rem;
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Stage Management */
+.stage-content {
+    display: none; /* Hide all stages by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.active-stage {
+    display: flex; /* Only show the active one */
+}
+
+/* Animation for the Title */
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- STAGE 2: CAKE STYLES --- */
+
+.wish-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.cake-container {
+    position: relative;
+    height: 250px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.cake {
+    position: relative;
+    width: 250px;
+    height: 140px;
+}
+
+/* Plate */
+.plate {
+    width: 270px;
+    height: 10px;
+    background: #eee;
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Layers */
+.layer {
+    position: absolute;
+    width: 100%;
+    background: #f8a5c2; /* Pink Cake */
+    border-radius: 10px;
+}
+
+.layer-bottom { height: 50px; bottom: 0; background: #c44569; }
+.layer-middle { height: 50px; bottom: 40px; background: #cf6a87; }
+.layer-top    { height: 50px; bottom: 80px; background: #f78fb3; }
+
+/* Icing & Drips */
+.icing {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    bottom: 120px;
+    z-index: 2;
+}
+
+.drip {
+    position: absolute;
+    background: #fff;
+    width: 20px;
+    height: 30px;
+    border-radius: 0 0 20px 20px;
+    z-index: 2;
+    top: 5px; /* Adjust based on top layer */
+}
+.drip1 { left: 20px; height: 40px; }
+.drip2 { left: 90px; height: 30px; }
+.drip3 { right: 40px; height: 35px; }
+
+/* Candles */
+.candle {
+    position: absolute;
+    width: 15px;
+    height: 50px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 5px, #74b9ff 5px, #74b9ff 10px);
+    bottom: 130px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 3;
+    border-radius: 4px;
+}
+
+/* The Flame */
+.flame {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background: #ff9f43;
+    border-radius: 50% 50% 20% 20%;
+    top: -30px;
+    left: 0;
+    animation: flicker 0.5s infinite alternate;
+    box-shadow: 0 0 15px #ff9f43;
+    transition: opacity 0.5s, transform 0.5s;
+    opacity: 1;
+}
+
+.flame.out {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+@keyframes flicker {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1) rotate(2deg); }
+}
+
+/* Wish Input Styling */
+.wish-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Animation for button appearance */
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reset Button - Subtle Style */
+.reset-btn {
+    position: absolute;
+    bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    padding: 8px 15px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 69, 58, 0.8); /* Turns red on hover */
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+#global-reset {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Pinned to bottom-right */
+    z-index: 9999; /* Always on top of everything */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#global-reset:hover {
+    background: rgba(255, 69, 58, 0.9); /* Red warning color */
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 69, 58, 0.5);
+}
