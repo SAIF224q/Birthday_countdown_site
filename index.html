@@ -81,7 +81,49 @@
             <button id="next-stage-btn" class="hidden" onclick="startStage3()">Read Your Message &rarr;</button>
         </div>
     </div>
-    <div id="stage-3" class="stage-content hidden-stage"></div>
+    <div id="stage-3" class="stage-content hidden-stage">
+        <div class="card-container">
+        <div class="letter-paper">
+            <h2 class="letter-header">A Note For You...</h2>
+            
+            <p id="typing-area"></p>
+            
+            <div class="signature">- The Universe</div>
+        </div>
+    </div>
+
+    <button id="final-btn" class="hidden" onclick="startStage4()">See Your Year Ahead &rarr;</button>
+    </div>
+    <div id="stage-4" class="stage-content hidden-stage">
+        <h2 class="horizon-title">Your Journey So Far</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number" id="stat-days">0</span>
+                <span class="stat-label">Days on Earth</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-hours">0</span>
+                <span class="stat-label">Hours Lived</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-hearts">0</span>
+                <span class="stat-label">Heartbeats (Approx)</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="stat-season">Spring</span>
+                <span class="stat-label">Born in Season</span>
+            </div>
+        </div>
+
+        <div class="manifesto-container">
+            <h3>Your Goal for This Year</h3>
+            <div class="manifesto-paper">
+                <p id="final-wish-display">...</p>
+            </div>
+        </div>
+
+        <p class="footer-note">This is your year. Own it.</p>
+    </div>
     <button id="global-reset" onclick="hardReset()">↻ Reset / Test Again</button>
 
     <script src="script.js"></script>
